@@ -1,5 +1,7 @@
 import express from "express";
 
+import { taskValidate } from "../middleware/taskValidate";
+
 const router = express.Router();
 
 let tasks = [];
@@ -9,13 +11,13 @@ router.get("/", (req, res) => {
   res.status(200).json(tasks);
 });
 
-router.post("/", (req, res) => {
+router.post("/", taskValidate, (req, res) => {
   const newTask = { id: Date.now(), ...req.body };
   tasks.push(newTask);
   res.status(201).json(newTask);
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", taskValidate, (req, res) => {
   const { id } = req.params;
   const index = tasks.findIndex((task) => task.id === Number(id));
 
