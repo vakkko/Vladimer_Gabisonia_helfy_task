@@ -6,6 +6,8 @@ import useHandleChange from "../../hooks/useHandleChange";
 
 import { URL } from "../../consts/consts";
 
+import "../../styles/taskForm.css";
+
 const TaskForm: React.FC = () => {
   const title = useHandleChange();
   const description = useHandleChange();
@@ -52,28 +54,41 @@ const TaskForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
-      <br />
-      <input
-        type="text"
-        id="title"
-        value={title.value}
-        onChange={title.onChange}
-        placeholder="title"
-      />
-      <br />
-      <PriorityField priority={priority} />
-      <label htmlFor="description">Description</label>
-      <br />
-      <textarea
-        id="description"
-        placeholder="description"
-        value={description.value}
-        onChange={description.onChange}
-      ></textarea>
-      <button type="submit">Send</button>
-    </form>
+    <div className="form-container">
+      <form className="task-form" onSubmit={handleSubmit}>
+        <h2 className="form-title">Create New Task</h2>
+
+        <div className="form-group">
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            className="form-input"
+            value={title.value}
+            onChange={title.onChange}
+            placeholder="What needs to be done?"
+            required
+          />
+        </div>
+
+        <PriorityField priority={priority} />
+
+        <div className="form-group">
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            className="form-textarea"
+            placeholder="Add some details..."
+            value={description.value}
+            onChange={description.onChange}
+          ></textarea>
+        </div>
+
+        <button type="submit" className="submit-btn">
+          Create Task
+        </button>
+      </form>
+    </div>
   );
 };
 

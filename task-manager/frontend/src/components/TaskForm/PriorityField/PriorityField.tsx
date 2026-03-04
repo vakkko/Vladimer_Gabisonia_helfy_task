@@ -6,22 +6,29 @@ import { PRIORITIES } from "../../../consts/consts";
 
 const PriorityField: React.FC<PriorityFieldProps> = ({ priority }) => {
   return (
-    <fieldset>
-      <legend>Priority</legend>
-
-      {PRIORITIES.map((prior, index) => (
-        <div key={index}>
-          <input
-            type="radio"
-            id={prior.toLowerCase()}
-            name="priority"
-            checked={priority.value === prior.toLowerCase()}
-            onChange={priority.onChange}
-            value={prior.toLowerCase()}
-          />
-          <label htmlFor={prior.toLowerCase()}>{prior}</label>
-        </div>
-      ))}
+    <fieldset className="priority-fieldset">
+      <legend>Priority Level</legend>
+      <div className="priority-options">
+        {PRIORITIES.map((prior, index) => {
+          const lowerPrior = prior.toLowerCase();
+          return (
+            <div key={index} className="radio-group">
+              <input
+                type="radio"
+                id={lowerPrior}
+                name="priority"
+                className="priority-radio"
+                checked={priority.value === lowerPrior}
+                onChange={priority.onChange}
+                value={lowerPrior}
+              />
+              <label htmlFor={lowerPrior} className="priority-label">
+                {prior}
+              </label>
+            </div>
+          );
+        })}
+      </div>
     </fieldset>
   );
 };
