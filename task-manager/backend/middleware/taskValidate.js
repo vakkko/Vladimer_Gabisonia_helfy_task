@@ -1,4 +1,4 @@
-export function taskValidate(req, res, next) {
+function taskValidate(req, res, next) {
   const { title } = req.body;
   const { description } = req.body;
 
@@ -20,3 +20,5 @@ export function taskValidate(req, res, next) {
 
   next();
 }
+
+export default taskValidate;

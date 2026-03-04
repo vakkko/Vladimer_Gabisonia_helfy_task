@@ -1,8 +1,8 @@
 import express from "express";
 
-import routes from "./routes/taskRouter";
+import routes from "./routes/taskRouter.js";
 
-import { errorHandler } from "./middleware/errorHandler";
+import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
 const port = 4000;

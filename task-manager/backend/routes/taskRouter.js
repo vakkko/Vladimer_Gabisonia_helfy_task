@@ -1,8 +1,8 @@
 import express from "express";
 
-import { taskValidate } from "../middleware/taskValidate";
+import taskValidate from "../middleware/taskValidate.js";
 
-export const router = express.Router();
+const router = express.Router();
 
 let tasks = [];
 const taskErrMessage = "Task was not found";
@@ -52,3 +52,5 @@ router.delete("/:id", (req, res) => {
 
   res.sendStatus(204);
 });
+
+export default router;
