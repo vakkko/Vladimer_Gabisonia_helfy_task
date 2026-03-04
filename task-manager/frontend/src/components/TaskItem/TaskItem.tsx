@@ -27,6 +27,31 @@ const TaskCarousel: React.FC = () => {
     fetchData();
   }, []);
 
+  const toggleComplete = async (id: string, task: TaskItemProps) => {
+    try {
+      const response = await fetch(`${URL}/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          ...task,
+          completed: !task.completed,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Unable to change status");
+      }
+      setTasks((prev) =>
+        prev.map((t) =>
+          t.id === Number(id) ? { ...t, completed: !t.completed } : t,
+        ),
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
   if (tasks.length === 0) return null;
@@ -43,15 +68,13 @@ const TaskCarousel: React.FC = () => {
               <span className="date">{task.createdAt}</span>
               <div className="actions">
                 <button className="icon-btn">
-                  <img src="./images/edit-icon.png" alt="edit" />
-                </button>
-                <button className="icon-btn">
                   <img src="./images/delete-icon.png" alt="delete" />
                 </button>
               </div>
             </div>
             <p className="description">{task.description}</p>
             <button
+              onClick={() => toggleComplete(String(task.id), task)}
               className={`status-tag ${task.completed ? "done" : "pending"}`}
             >
               {task.completed ? "Completed" : "Not-Completed"}

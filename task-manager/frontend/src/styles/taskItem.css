@@ -43,13 +43,15 @@
 .task-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
-.task-header > .actions > button {
+.actions img {
   width: 20px;
+}
+
+.actions {
   display: flex;
-  align-items: center;
 }
 
 .status-tag {
