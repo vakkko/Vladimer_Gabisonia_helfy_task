@@ -39,7 +39,6 @@
 }
 
 .priority-fieldset {
-  border: 1px solid #eee;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -47,7 +46,6 @@
 
 .priority-fieldset legend {
   font-weight: 600;
-  padding: 0 10px;
   color: #666;
   font-size: 0.9rem;
 }

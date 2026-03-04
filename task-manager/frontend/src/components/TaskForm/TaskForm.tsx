@@ -57,7 +57,6 @@ const TaskForm: React.FC = () => {
     <div className="form-container">
       <form className="task-form" onSubmit={handleSubmit}>
         <h2 className="form-title">Create New Task</h2>
-
         <div className="form-group">
           <label htmlFor="title">Title</label>
           <input
@@ -70,9 +69,7 @@ const TaskForm: React.FC = () => {
             required
           />
         </div>
-
         <PriorityField priority={priority} />
-
         <div className="form-group">
           <label htmlFor="description">Description</label>
           <textarea
@@ -83,7 +80,6 @@ const TaskForm: React.FC = () => {
             onChange={description.onChange}
           ></textarea>
         </div>
-
         <button type="submit" className="submit-btn">
           Create Task
         </button>
