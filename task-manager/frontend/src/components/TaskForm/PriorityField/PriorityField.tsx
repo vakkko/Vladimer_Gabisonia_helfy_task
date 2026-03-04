@@ -1,20 +1,24 @@
 import React from "react";
 
-const PriorityField: React.FC = () => {
+import type { PriorityFieldProps } from "./priorityField.interface";
+
+const PriorityField: React.FC<PriorityFieldProps> = ({ priority }) => {
   const PRIORITIES = ["Low", "Medium", "High"];
   return (
     <fieldset>
       <legend>Priority</legend>
 
-      {PRIORITIES.map((priority, index) => (
+      {PRIORITIES.map((prior, index) => (
         <div key={index}>
           <input
             type="radio"
-            id={priority.toLowerCase()}
+            id={prior.toLowerCase()}
             name="priority"
-            value={priority.toLowerCase()}
+            checked={priority.value === prior.toLowerCase()}
+            onChange={priority.onChange}
+            value={prior.toLowerCase()}
           />
-          <label htmlFor={priority.toLowerCase()}>{priority}</label>
+          <label htmlFor={prior.toLowerCase()}>{prior}</label>
         </div>
       ))}
     </fieldset>
