@@ -2,7 +2,7 @@ import express from "express";
 
 import { taskValidate } from "../middleware/taskValidate";
 
-const router = express.Router();
+export const router = express.Router();
 
 let tasks = [];
 const taskErrMessage = "Task was not found";
