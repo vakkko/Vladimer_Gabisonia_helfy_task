@@ -69,3 +69,35 @@
   background: #fee2e2;
   color: #991b1b;
 }
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.priority-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.priority-badge.low {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.priority-badge.medium {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.priority-badge.high {
+  background-color: rgba(149, 211, 149, 0.15);
+  color: rgb(149, 211, 149);
+}
