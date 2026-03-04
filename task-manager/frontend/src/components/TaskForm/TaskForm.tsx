@@ -4,6 +4,8 @@ import PriorityField from "./PriorityField/PriorityField";
 
 import useHandleChange from "../../hooks/useHandleChange";
 
+import { URL } from "../../consts/consts";
+
 const TaskForm: React.FC = () => {
   const title = useHandleChange();
   const description = useHandleChange();
@@ -13,12 +15,9 @@ const TaskForm: React.FC = () => {
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
   const day = now.getDate();
-  const createdAt = `${year}-${month}-${day}`;
+  const createdAt = `${day}-${month}-${year}`;
 
-  const URL = "http://localhost:4000/api/tasks";
-
-  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     let titleValue = title.value;
     let descriptionValue = description.value;
     let priorityValue = priority.value;

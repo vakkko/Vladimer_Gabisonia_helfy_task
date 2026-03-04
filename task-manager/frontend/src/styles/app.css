@@ -10,10 +10,6 @@ textarea {
   font-family: Arial, sans-serif;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 input,
 textarea {
   outline: none;
@@ -25,4 +21,9 @@ textarea {
 
 fieldset {
   border: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
 }

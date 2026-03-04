@@ -2,8 +2,9 @@ import React from "react";
 
 import type { PriorityFieldProps } from "./priorityField.interface";
 
+import { PRIORITIES } from "../../../consts/consts";
+
 const PriorityField: React.FC<PriorityFieldProps> = ({ priority }) => {
-  const PRIORITIES = ["Low", "Medium", "High"];
   return (
     <fieldset>
       <legend>Priority</legend>
