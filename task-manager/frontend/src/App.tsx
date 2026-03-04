@@ -1,4 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import TaskForm from "./components/TaskForm/TaskForm";
 
-createRoot(document.getElementById("root")!).render(<StrictMode></StrictMode>);
+import "./styles/app.css";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <TaskForm />
+  </StrictMode>,
+);
