@@ -88,11 +88,11 @@ const TaskCarousel: React.FC = () => {
                 <h3>{task.title}</h3>
                 <span className="date">{task.createdAt}</span>
                 <div className="actions">
-                  <button
-                    className="icon-btn"
-                    onClick={() => handleDeleteClick(task.id)}
-                  >
-                    <img src="./images/delete-icon.png" alt="delete" />
+                  <button onClick={() => handleDeleteClick(task.id)}>
+                    <img src="/images/delete-icon.png" alt="delete" />
+                  </button>
+                  <button>
+                    <img src="/images/edit-icon.png" alt="edit icon" />
                   </button>
                 </div>
               </div>
