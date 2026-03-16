@@ -1,10 +1,16 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { URL } from "../../consts/consts";
-import type { TaskItemProps } from "./taskItem.interface";
-import "../../styles/taskItem.css";
+
 import DeleteModal from "./DeleteModal/DeleteModal";
 
-const TaskCarousel: React.FC = () => {
+import { URL } from "../../consts/consts";
+
+import type { TaskDatalInterface, TaskItemProps } from "../../types/types";
+
+import "../../styles/taskItem.css";
+
+const TaskCarousel: React.FC<TaskDatalInterface> = ({
+  taskData: { title, description, priority },
+}) => {
   const [tasks, setTasks] = useState<TaskItemProps[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -68,6 +74,12 @@ const TaskCarousel: React.FC = () => {
     setDeleteTaskId(id);
   };
 
+  const handleEditClick = (task: TaskItemProps) => {
+    title.setValue(task.title);
+    priority.setValue(task.priority);
+    description.setValue(task.description);
+  };
+
   if (loading && tasks.length === 0) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -91,7 +103,7 @@ const TaskCarousel: React.FC = () => {
                   <button onClick={() => handleDeleteClick(task.id)}>
                     <img src="/images/delete-icon.png" alt="delete" />
                   </button>
-                  <button>
+                  <button onClick={() => handleEditClick(task)}>
                     <img src="/images/edit-icon.png" alt="edit icon" />
                   </button>
                 </div>

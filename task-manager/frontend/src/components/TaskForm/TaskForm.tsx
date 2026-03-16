@@ -2,17 +2,14 @@ import React from "react";
 
 import PriorityField from "./PriorityField/PriorityField";
 
-import useHandleChange from "../../hooks/useHandleChange";
-
 import { URL } from "../../consts/consts";
 
 import "../../styles/taskForm.css";
+import type { TaskDatalInterface } from "../../types/types";
 
-const TaskForm: React.FC = () => {
-  const title = useHandleChange();
-  const description = useHandleChange();
-  const priority = useHandleChange();
-
+const TaskForm: React.FC<TaskDatalInterface> = ({
+  taskData: { title, description, priority },
+}) => {
   const now = new Date();
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
