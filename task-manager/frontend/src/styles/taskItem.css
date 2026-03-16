@@ -134,6 +134,11 @@
   margin-top: 20px;
 }
 
+.modal-actions button {
+  padding: 7px 13px;
+  border-radius: 5px;
+}
+
 .btn-cancel {
   background-color: #e0e0e0;
   color: #333;
