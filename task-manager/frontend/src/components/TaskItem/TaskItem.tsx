@@ -4,12 +4,14 @@ import DeleteModal from "./DeleteModal/DeleteModal";
 
 import { URL } from "../../consts/consts";
 
-import type { TaskDatalInterface, TaskItemProps } from "../../types/types";
+import type { TaskItemInterface, TaskItemProps } from "../../types/types";
 
 import "../../styles/taskItem.css";
 
-const TaskCarousel: React.FC<TaskDatalInterface> = ({
+const TaskCarousel: React.FC<TaskItemInterface> = ({
   taskData: { title, description, priority },
+  setEditTask,
+  setTaskId,
 }) => {
   const [tasks, setTasks] = useState<TaskItemProps[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -78,6 +80,8 @@ const TaskCarousel: React.FC<TaskDatalInterface> = ({
     title.setValue(task.title);
     priority.setValue(task.priority);
     description.setValue(task.description);
+    setEditTask(true);
+    setTaskId(task.id);
   };
 
   if (loading && tasks.length === 0) return <p>Loading...</p>;

@@ -5,10 +5,12 @@ import PriorityField from "./PriorityField/PriorityField";
 import { URL } from "../../consts/consts";
 
 import "../../styles/taskForm.css";
-import type { TaskDatalInterface } from "../../types/types";
+import type { TaskFormProps } from "../../types/types";
 
-const TaskForm: React.FC<TaskDatalInterface> = ({
+const TaskForm: React.FC<TaskFormProps> = ({
   taskData: { title, description, priority },
+  editTask,
+  taskId,
 }) => {
   const now = new Date();
   const year = now.getFullYear();
@@ -23,8 +25,8 @@ const TaskForm: React.FC<TaskDatalInterface> = ({
 
     const postData = async () => {
       try {
-        const response = await fetch(URL, {
-          method: "POST",
+        const response = await fetch(`${URL}${editTask ? `/${taskId}` : ""}`, {
+          method: editTask ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -78,7 +80,7 @@ const TaskForm: React.FC<TaskDatalInterface> = ({
           ></textarea>
         </div>
         <button type="submit" className="submit-btn">
-          Create Task
+          {editTask ? "Update Task" : " Create Task"}
         </button>
       </form>
     </div>
